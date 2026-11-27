@@ -1,0 +1,99 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALCAZAR AI - Video Studio</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#080a10;color:white;font-family:Arial,sans-serif}
+header{padding:22px 18px;border-bottom:1px solid #252936;display:flex;align-items:center;justify-content:space-between}
+.logo{font-size:23px;font-weight:900;letter-spacing:1px}
+.logo span{color:#8065ff}
+.tag{color:#aaa;font-size:11px}
+main{max-width:650px;margin:auto;padding:25px 18px}
+h1{font-size:29px;margin:10px 0}
+.subtitle{color:#9298a8;font-size:14px;line-height:1.6}
+.section{margin-top:27px}
+.section h3{font-size:15px;margin-bottom:12px}
+.upload{border:1px dashed #555a70;border-radius:15px;padding:30px 15px;text-align:center;background:#11141e}
+.upload input{display:none}
+.upload label{display:block;cursor:pointer;color:#b8aaff;font-weight:bold}
+#preview{width:100%;max-height:260px;object-fit:contain;margin-top:15px;border-radius:10px;display:none}
+textarea,select{width:100%;background:#121622;color:white;border:1px solid #34394b;border-radius:10px;padding:14px;font-size:15px}
+textarea{height:115px;resize:vertical}
+select{margin-top:5px}
+button{width:100%;padding:16px;border:0;border-radius:12px;background:linear-gradient(100deg,#6446ef,#a044fa);color:white;font-size:16px;font-weight:bold;margin-top:22px}
+button:active{opacity:.8}
+.note{font-size:12px;color:#888fa0;line-height:1.6;margin-top:14px}
+footer{text-align:center;color:#62697a;font-size:12px;padding:35px}
+</style>
+</head>
+<body>
+<header>
+ <div>
+  <div class="logo">ALCAZAR <span>AI</span></div>
+  <div class="tag">VIDEO GENERATION STUDIO</div>
+ </div>
+ <div style="color:#a99aff;font-size:12px">BETA v1.0</div>
+</header>
+<main>
+ <h1>Create your video</h1>
+ <p class="subtitle">Transformez vos images et vos idées en vidéos cinématiques avec ALCAZAR AI.</p>
+
+ <div class="section">
+  <h3>01 — Upload your image</h3>
+  <div class="upload">
+   <label for="image">＋ Ajouter une image<br><br>
+   <span style="color:#888;font-size:12px">JPG, PNG ou WEBP</span></label>
+   <input id="image" type="file" accept="image/*">
+   <img id="preview">
+  </div>
+ </div>
+
+ <div class="section">
+  <h3>02 — Describe your video</h3>
+  <textarea id="prompt" placeholder="Describe your video... Exemple : A cinematic drone slowly flying forward past an old church tower."></textarea>
+ </div>
+
+ <div class="section">
+  <h3>03 — Video duration</h3>
+  <select id="duration">
+   <option value="5">5 seconds</option>
+   <option value="10" selected>10 seconds</option>
+   <option value="15">15 seconds</option>
+  </select>
+ </div>
+
+ <div class="section">
+  <h3>04 — Video style</h3>
+  <select id="style">
+   <option>Cinematic</option>
+   <option>Realistic</option>
+   <option>Drone footage</option>
+   <option>Professional film</option>
+  </select>
+ </div>
+
+ <button onclick="generate()">✦ GENERATE VIDEO</button>
+ <p class="note" id="status">ALCAZAR AI — Video generation engine not connected yet. This is the first interface version.</p>
+</main>
+<footer>© 2026 ALCAZAR AI — All rights reserved</footer>
+
+<script>
+const imageInput=document.getElementById('image');
+imageInput.addEventListener('change',function(){
+ const file=this.files[0];
+ if(file){
+  document.getElementById('preview').src=URL.createObjectURL(file);
+  document.getElementById('preview').style.display='block';
+ }
+});
+function generate(){
+ document.getElementById('status').textContent=
+ "Interface ready! The AI video generation engine must be connected before generating videos.";
+}
+</script>
+</body>
+</html>
